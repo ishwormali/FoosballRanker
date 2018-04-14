@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Panel, Button, Glyphicon, Row, Col } from 'react-bootstrap';
+import { Panel, Button, Glyphicon, Table, Row, Col } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
 import * as Actions from './MatchesActions';
@@ -19,7 +19,13 @@ class Matches extends React.Component {
         const { matches } = this.props;
 
         return <div>
-            <h2>Matches</h2>
+            <Row>
+                <Col md={12}>
+                    <h2 className="pull-left">Matches</h2>
+                    <Button className="pull-right"  bsStyle="primary"><Glyphicon glyph="plus" />New Match</Button>
+                </Col>
+            </Row>
+          
             <p>List of match</p>
             {this.renderTable(matches)}
             <br /><br />
@@ -29,7 +35,7 @@ class Matches extends React.Component {
     }
 
     renderTable(matches) {
-        return <table className="table">
+        return <Table>
             <thead>
                 <tr>
                     <th>Match Date</th>
@@ -45,16 +51,38 @@ class Matches extends React.Component {
                         <td>{match.dateCreatedFormatted}</td>
                         <td>{match.winner}</td>
                         <td>
-
+                            <Row>
+                                <Col md={6}>
+                                    <Table width="10" striped condensed>
+                                        <thead>
+                                            <tr>
+                                                <th>{match.participants[0].name}</th>
+                                                
+                                                <th>{match.participants[1].name}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{match.participants[0].score}</td>
+                                                
+                                                <td>{match.participants[1].score}</td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                </Col>
+                                <Col md={6} xsHidden></Col>
+                            </Row>
                         </td>
-                        <td></td>
+                        <td>
+                            <Link to={`/matches/${match.id}`}><Button bsStyle="primary"><Glyphicon glyph="arrow-right" />View Details</Button></Link>
+                        </td>
                     </tr>
 
                 }
                 )}
             </tbody>
 
-        </table>;
+        </Table>;
     }
 }
 

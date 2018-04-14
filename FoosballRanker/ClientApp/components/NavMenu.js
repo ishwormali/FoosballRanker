@@ -20,16 +20,7 @@ export class NavMenu extends React.Component {
                     
                     
                 </Nav>
-                <Nav pullRight>
-                    
-                            <li>
-                            <form action="/account/logout" method="post" id="logoutForm">
-                                <button type="submit" className="btn btn-link navbar-btn navbar-link">Log out</button>
-                            </form>
-                            </li>
-                      
-                    
-                </Nav>
+               
             </Navbar>
         </div>;
     }

@@ -1,7 +1,15 @@
 ﻿
-export async function fetchMatches() {
+export async function fetchMatches(id) {
+    if (id) {
+        return matches.find(match => {
+            if (match.id == id) {
+                return true;
+            }
+        })
+    }
     return await matches;
 }
+
 export async function fetchParticipants() {
     return await participants;
 }
