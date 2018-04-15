@@ -10,8 +10,38 @@ export async function fetchMatches(id) {
     return await matches;
 }
 
+export async function addMatch(match) {
+
+}
+
 export async function fetchParticipants() {
     return await participants;
+}
+
+export async function fetchParticipantDetails(id) {
+    return {
+        "id": 1,
+        "name": "Christiano Ronaldo",
+        "totalMatches": 3,
+        "totalWins": 2,
+        "totalLosses": 1,
+        "opponents": [
+            {
+                "id": 2,
+                "name": "Messe",
+                "totalMatches": 5,
+                "totalWins": 3,
+                "totalLosses":2
+            }, {
+                "id": 3,
+                "name": "Swaraj",
+                "totalMatches":9,
+                "totalWins": 5,
+                "totalLosses": 4
+            }
+        ]
+
+    }
 }
 
 export async function addParticipant(participant) {
@@ -36,7 +66,7 @@ let participants = [
         "name": "Christiano Ronaldo",
         "totalMatches": 3,
         "totalWins": 2,
-        "totalLoses": 1
+        "totalLosses": 1
 
     },
     {
@@ -44,7 +74,7 @@ let participants = [
         "name": "Messe",
         "totalMatches": 6,
         "totalWins": 6,
-        "totalLoses": 0
+        "totalLosses": 0
 
     },
     {
@@ -52,7 +82,7 @@ let participants = [
         "name": "Swaraj",
         "totalMatches": 2,
         "totalWins": 2,
-        "totalLoses": 0
+        "totalLosses": 0
 
     },
     {
@@ -60,7 +90,7 @@ let participants = [
         "name": "Neymar",
         "totalMatches": 4,
         "totalWins": 3,
-        "totalLoses": 1
+        "totalLosses": 1
 
     }
 ];

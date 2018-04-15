@@ -42,6 +42,7 @@ class Participants extends React.Component {
                     <th>Matches</th>
                     <th>Wins</th>
                     <th>Losses</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -50,7 +51,12 @@ class Participants extends React.Component {
                         <td>{participant.name}</td>
                         <td>{participant.totalMatches}</td>
                         <td>{participant.totalWins}</td>
-                        <td>{participant.totalLoses}</td>
+                        <td>{participant.totalLosses}</td>
+                        <td>
+                            <Link to={`participants/${participant.id}`}>
+                                <Button bsStyle="primary"><Glyphicon glyph="arrow-right" />View Details</Button>
+                            </Link>
+                        </td>
                     </tr>
 
                 

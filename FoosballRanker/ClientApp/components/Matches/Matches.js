@@ -22,7 +22,9 @@ class Matches extends React.Component {
             <Row>
                 <Col md={12}>
                     <h2 className="pull-left">Matches</h2>
-                    <Button className="pull-right"  bsStyle="primary"><Glyphicon glyph="plus" />New Match</Button>
+                    <Link to={"/matches/new"}>
+                        <Button className="pull-right" bsStyle="primary"><Glyphicon glyph="plus" />New Match</Button>
+                    </Link>
                 </Col>
             </Row>
           
@@ -74,7 +76,7 @@ class Matches extends React.Component {
                             </Row>
                         </td>
                         <td>
-                            <Link to={`/matches/${match.id}`}><Button bsStyle="primary"><Glyphicon glyph="arrow-right" />View Details</Button></Link>
+                            <Link to={`/matches/details/${match.id}`}><Button bsStyle="primary"><Glyphicon glyph="arrow-right" />View Details</Button></Link>
                         </td>
                     </tr>
 

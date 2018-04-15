@@ -7,7 +7,7 @@ export default class MatchParticipantDetail extends React.Component {
     render() {
         let { participant } = this.props;
         participant = participant || {};
-        return <Panel bsStyle="primary">
+        return <Panel bsStyle="info">
             <Panel.Heading className="text-center" ><h3>{participant.name}</h3></Panel.Heading>
             <Panel.Body>
                 <Row >
