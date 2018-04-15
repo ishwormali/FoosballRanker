@@ -1,5 +1,9 @@
 ﻿
 export async function fetchMatches(id) {
+    let response = await fetch(`/api/match/${id ? id : ''}`);
+    const data = await response.json();
+    return data;
+
     if (id) {
         return matches.find(match => {
             if (match.id == id) {
@@ -11,40 +15,52 @@ export async function fetchMatches(id) {
 }
 
 export async function addMatch(match) {
+    console.log('adding match', match);
+    try {
+        let response = await fetch('/api/match', {
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(match)
+        });
+        return response.ok;
+    } catch (ex) {
+        return false;
+    }
 
 }
 
 export async function fetchParticipants() {
-    return await participants;
+    //return await participants;
+    let response = await fetch('/api/participant');
+    let data = await response.json();
+    return data;
 }
 
 export async function fetchParticipantDetails(id) {
-    return {
-        "id": 1,
-        "name": "Christiano Ronaldo",
-        "totalMatches": 3,
-        "totalWins": 2,
-        "totalLosses": 1,
-        "opponents": [
-            {
-                "id": 2,
-                "name": "Messe",
-                "totalMatches": 5,
-                "totalWins": 3,
-                "totalLosses":2
-            }, {
-                "id": 3,
-                "name": "Swaraj",
-                "totalMatches":9,
-                "totalWins": 5,
-                "totalLosses": 4
-            }
-        ]
-
-    }
+    const response = await fetch(`/api/participant/${id}`);
+    const data = response.json();
+    return data;
+    
 }
 
 export async function addParticipant(participant) {
+    try {
+        let response=await fetch('/api/participant', {
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(participant)
+        });
+        return response.ok;
+    } catch (ex) {
+        return false;
+    }
+
     let newParticipant = Object.assign({},participant, {
         "id": ++maxId,
         "totalMatches": 0,

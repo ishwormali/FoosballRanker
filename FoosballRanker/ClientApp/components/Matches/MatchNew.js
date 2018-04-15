@@ -2,7 +2,7 @@
 import { Panel, Table, Row, Col,Button,Glyphicon } from 'react-bootstrap';
 
 import MatchNewPanel from './MatchNewPanel';
-import {fetchParticipants } from '../../api/FoosballRankerApi';
+import { fetchParticipants, addMatch } from '../../api/FoosballRankerApi';
 
 export default class NewMatch extends React.Component {
     constructor() {
@@ -11,7 +11,8 @@ export default class NewMatch extends React.Component {
         this.canSave = this.canSave.bind(this);
         this.state = {
             participants: [],
-            newParticipants: [{}, {}]
+            newParticipants: [{}, {}],
+            inProgress:false
         }
     }
     async componentDidMount() {
@@ -23,6 +24,18 @@ export default class NewMatch extends React.Component {
         const { newParticipants } = this.state;
         if (this.canSave()) {
             console.log('saving');
+            let match = {};
+            match.participants = newParticipants.map(p => {
+                return { id: p.participant.id, score: p.score }
+            });
+
+            this.setState({ inProgress: true });
+            const result = await addMatch(match);
+            this.setState({ inProgress: false });
+            if (result) {
+                this.props.history.push('/');
+            }
+            
         }
     }
     canSave() {

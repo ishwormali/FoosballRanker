@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FoosballRanker;
+using FoosballRanker.Services;
 using FoosbalRanker.Data;
 using FoosbalRanker.Models;
-using FoosbalRanker.Services;
-using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -30,17 +30,9 @@ namespace FoosbalRanker
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IFoosballService, FoosballService>();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
-            services.AddTransient<IAuctionService, AuctionService>();
-
-            // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
             services.AddMvc();
-            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,17 +67,10 @@ namespace FoosbalRanker
                     defaults: new { controller = "Home", action = "Index" });
             });
 
-            app.UseHangfireServer();
-            app.UseHangfireDashboard();
-
-            ConfigureJobs();
+            MapperSetup.Setup();
+            
         }
-
-        protected virtual void ConfigureJobs()
-        {
-            RecurringJob.AddOrUpdate<BidScheduler>(scheduler => scheduler.CheckBid(), "*/1 * * * *");
-        }
-
+        
         protected virtual void ConfigureAdditionalMiddleware(IApplicationBuilder app)
         {
             

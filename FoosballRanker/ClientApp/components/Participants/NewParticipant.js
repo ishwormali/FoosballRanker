@@ -35,11 +35,16 @@ export default class NewParticipant extends React.Component {
         console.log('adding ', this.state.participant);
         this.setState({ inProgress: true });
 
-        const newParticipant=await addParticipant(participant);
-        this.clear();
-        if (this.props.callback) {
-            this.props.callback(newParticipant);
+        const newParticipant = await addParticipant(participant);
+        this.setState({ inProgress: false });
+        if (newParticipant) {
+            this.clear();
+            if (this.props.callback) {
+                this.props.callback(newParticipant);
+            }
         }
+        
+        
     }
 
     clear() {

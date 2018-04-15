@@ -51,6 +51,7 @@ export default class ParticipantDetails extends React.Component {
                                                     <th>Total Matches</th>
                                                     <th>Total wins</th>
                                                     <th>Total Losses</th>
+                                                    <th>Total Draws</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -58,6 +59,7 @@ export default class ParticipantDetails extends React.Component {
                                                     <td>{details.totalMatches}</td>
                                                     <td>{details.totalWins}</td>
                                                     <td>{details.totalLosses}</td>
+                                                    <td>{details.totalDraws}</td>
                                                 </tr>
                                             </tbody>
                                         </Table>
