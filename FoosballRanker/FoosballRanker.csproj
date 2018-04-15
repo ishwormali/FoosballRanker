@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\components\Main\Main.js" />
+    <None Remove="ClientApp\containers\Main\Main.js" />
     <None Remove="Properties\PublishProfiles\IshTestAuctionPlatform - Web Deploy.pubxml" />
     <None Remove="tscasdfonfig.jsonsdf" />
   </ItemGroup>
@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\components\Main\Main.js" />
+    <TypeScriptCompile Include="ClientApp\containers\Main\Main.js" />
   </ItemGroup>
 
   <ItemGroup>

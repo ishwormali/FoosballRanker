@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FoosballRanker.Controllers
 {
+    /// <summary>
+    /// Api controller for match that allows client to fetch and add new match
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Match")]
     public class MatchController : Controller
@@ -23,6 +26,10 @@ namespace FoosballRanker.Controllers
             _foosballService = foosballService;
         }
 
+        /// <summary>
+        /// Gets all matches ordered descending by match created date
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<MatchDto>> GetAll()
         {
             var allMatches = await _foosballService.GetAllMatches();
@@ -30,6 +37,11 @@ namespace FoosballRanker.Controllers
             return dtos;
         }
 
+        /// <summary>
+        /// Get match by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("{id}")]
         public async Task<MatchDto> Get(int id)
         {
@@ -38,6 +50,11 @@ namespace FoosballRanker.Controllers
             return dto;
         }
 
+        /// <summary>
+        /// Add new match
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddMatch([FromBody]NewMatchBindingModel model)
         {
