@@ -7,6 +7,9 @@ import { fetchMatches } from '../../api/FoosballRankerApi';
 const initialState = {
     match: {}
 }
+/**
+ * Match detail component that displays match details
+ */
 export default class MatchDetail extends React.Component {
     constructor() {
         super();

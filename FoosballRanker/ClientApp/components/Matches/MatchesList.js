@@ -3,34 +3,18 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { Panel, Button, Glyphicon, Table, Row, Col } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
-import * as Actions from './MatchesActions';
 
-class Matches extends React.Component {
+/**
+ * List component to display all the matches
+ */
+export default class MatchesList extends React.Component {
 
-    constructor() {
-        super();
-        
-    }
-    componentDidMount() {
-        this.props.fetchMatches();
-    }
-    
     render() {
         const { matches } = this.props;
 
         return <div>
-            <Row>
-                <Col md={12}>
-                    <h2 className="pull-left">Matches</h2>
-                    <Link to={"/matches/new"}>
-                        <Button className="pull-right" bsStyle="primary"><Glyphicon glyph="plus" />New Match</Button>
-                    </Link>
-                </Col>
-            </Row>
-          
-            <p>List of match</p>
+            
             {this.renderTable(matches)}
-            <br /><br />
             
 
         </div>;
@@ -59,14 +43,14 @@ class Matches extends React.Component {
                                         <thead>
                                             <tr>
                                                 <th>{match.participants[0].name}</th>
-                                                
+
                                                 <th>{match.participants[1].name}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>{match.participants[0].score}</td>
-                                                
+
                                                 <td>{match.participants[1].score}</td>
                                             </tr>
                                         </tbody>
@@ -88,13 +72,3 @@ class Matches extends React.Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        fetchMatches: Actions.fetchMatchesAction(dispatch)
-    }
-};
-
-export default connect(
-    (state) => state.matches,
-    mapDispatchToProps
-)(Matches);

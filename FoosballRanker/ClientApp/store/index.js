@@ -1,5 +1,5 @@
-import ParticipantsReducer from '../components/Participants/ParticipantsReducer';
-import MatchesReducer from '../components/Matches/MatchesReducer';
+import ParticipantsReducer from '../containers/Participants/ParticipantsReducer';
+import MatchesReducer from '../containers/Matches/MatchesReducer';
 
 export const reducers = {
     participants: ParticipantsReducer,

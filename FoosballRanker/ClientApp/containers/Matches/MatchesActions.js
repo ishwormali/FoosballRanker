@@ -1,6 +1,10 @@
 ﻿import { fetchMatches } from '../../api/FoosballRankerApi';
 import { MatchesActionTypes } from './MatchesActionTypes';
 
+/**
+ * Redux action to fetch all matches
+ * @param {any} dispatch
+ */
 export function fetchMatchesAction(dispatch) {
     return async () => {
         try {

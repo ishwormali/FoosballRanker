@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Route } from 'react-router-dom';
 
 
-import Main from './components/Main/Main';
-import { Layout } from './components/Layout';
-import Participants  from './components/Participants/Participants';
+import Main from './containers/Main/Main';
+import { Layout } from './containers/Layout';
+import Participants  from './containers/Participants/Participants';
 import MatchDetails from './components/Matches/MatchDetails';
 import NewMatch from './components/Matches/MatchNew';
 import ParticipantDetails from './components/Participants/ParticipantDetails';

@@ -4,6 +4,9 @@ import { Panel, Table, Row, Col,Button,Glyphicon } from 'react-bootstrap';
 import MatchNewPanel from './MatchNewPanel';
 import { fetchParticipants, addMatch } from '../../api/FoosballRankerApi';
 
+/**
+ * New match component
+ */
 export default class NewMatch extends React.Component {
     constructor() {
         super();
